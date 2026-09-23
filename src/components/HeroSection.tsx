@@ -223,7 +223,7 @@ export const HeroSection: React.FC = () => {
       >
         <img
           ref={imageRef}
-          alt="Manos sosteniendo llavero de latón artesanal sobre mantel de lino en ambiente cálido"
+          alt="Llave atascada en cerradura de puerta - Cerrajeros de urgencia 24 horas"
           className="w-full h-[115%] object-cover object-center -mt-[5%] will-change-transform"
           loading="eager"
           src={siteConfig.heroImage}
