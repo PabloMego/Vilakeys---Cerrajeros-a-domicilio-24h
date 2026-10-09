@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #f7f3ec;
-    color: #2d241f;
+    background-color: #feb616;
+    color: #000000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga" 1, "kern" 1;
@@ -13,26 +13,18 @@
   }
 }
 
-.serif-display {
-  font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: -0.02em;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Smooth custom scrollbar for luxury touch */
+/* Custom scrollbar matching yellow & black aesthetic */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #efe7da;
+  background: #f0a905;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d7c2a7;
+  background: #111111;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7e6c5f;
+  background: #000000;
 }
+
