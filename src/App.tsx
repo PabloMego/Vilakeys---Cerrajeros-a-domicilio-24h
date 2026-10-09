@@ -15,10 +15,14 @@ export const App: React.FC = () => {
       <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
 
       {/* Main Content Sections */}
-      <main className="max-w-md md:max-w-xl lg:max-w-2xl mx-auto px-5 space-y-4">
+      <main className="max-w-md md:max-w-5xl lg:max-w-6xl mx-auto px-5 space-y-4 md:space-y-8">
         <HeroSection />
-        <LocalCoverageSection />
-        <AboutUsSection />
+        
+        {/* Responsive Cards Grid: 1 col on mobile, 2 cols side-by-side on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-stretch">
+          <LocalCoverageSection />
+          <AboutUsSection />
+        </div>
       </main>
 
       {/* Footer */}

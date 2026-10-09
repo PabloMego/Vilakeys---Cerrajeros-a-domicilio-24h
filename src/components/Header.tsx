@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Switch to centered lock pill when scrolled past 140px
+      // Switch to centered lock pill when scrolled past 140px on mobile
       setIsScrolled(window.scrollY > 140);
     };
     handleScroll();
@@ -32,25 +32,27 @@ export const Header: React.FC<HeaderProps> = ({
         className="sticky top-0 z-40 w-full bg-[#feb616] transition-all duration-300 px-5 pt-4 pb-3"
         data-purpose="main-header"
       >
-        <div className="max-w-md md:max-w-xl lg:max-w-2xl mx-auto flex items-center justify-between relative min-h-[50px]">
-          {/* Default Top Left Logo (shown when at the top) */}
+        <div className="max-w-md md:max-w-5xl lg:max-w-6xl mx-auto flex items-center justify-between relative min-h-[50px]">
+          {/* Logo (shown on left; on mobile fades out when scrolled past hero) */}
           <div
             className={`transition-all duration-300 ${
-              isScrolled ? 'opacity-0 -translate-y-2 pointer-events-none absolute left-0' : 'opacity-100 translate-y-0'
+              isScrolled
+                ? 'opacity-0 -translate-y-2 pointer-events-none absolute left-0 md:opacity-100 md:translate-y-0 md:pointer-events-auto md:static'
+                : 'opacity-100 translate-y-0'
             }`}
           >
             <a href="#inicio" className="block focus:outline-none focus:ring-2 focus:ring-black rounded-lg">
               <img
                 src={siteConfig.logoImage}
                 alt="Vilakeys · Cerrajeros a Domicilio 24h"
-                className="h-11 sm:h-12 w-auto object-contain"
+                className="h-11 sm:h-12 md:h-13 w-auto object-contain"
               />
             </a>
           </div>
 
-          {/* Scrolled State: Centered Lock Capsule (matching Screenshot 2) */}
+          {/* Scrolled State for Mobile: Centered Lock Capsule (matching Screenshot 2 on mobile only) */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${
+            className={`md:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${
               isScrolled ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
             }`}
           >
@@ -67,11 +69,37 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
           </div>
 
-          {/* Right Hamburger Menu Button (Three horizontal black bars) */}
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8">
+            {siteConfig.navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-extrabold text-sm lg:text-base text-black hover:opacity-75 transition-opacity"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop Direct Call CTA Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href={siteConfig.phoneHref}
+              className="py-2.5 px-5 rounded-xl bg-white border-2 border-black text-[#e59800] font-extrabold text-sm flex items-center gap-2 shadow-xs hover:bg-white/95 active:scale-95 transition-all"
+            >
+              <svg className="w-4 h-4 text-black shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z" />
+              </svg>
+              <span>{siteConfig.phone}</span>
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Menu Button (visible on mobile only) */}
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="ml-auto p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black hover:opacity-80 active:scale-95 transition-transform cursor-pointer"
+            className="md:hidden ml-auto p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black hover:opacity-80 active:scale-95 transition-transform cursor-pointer"
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
           >
@@ -99,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm transition-opacity duration-300 animate-in fade-in"
+          className="md:hidden fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm transition-opacity duration-300 animate-in fade-in"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
