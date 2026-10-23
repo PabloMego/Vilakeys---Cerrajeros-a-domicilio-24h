@@ -8,6 +8,7 @@ import { PricingTransparencySection } from './components/PricingTransparencySect
 import { FAQSection } from './components/FAQSection';
 import { SiteFooter } from './components/SiteFooter';
 import { StickyBottomActionBar } from './components/StickyBottomActionBar';
+import { Analytics } from '@vercel/analytics/react';
 
 export const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,6 +44,9 @@ export const App: React.FC = () => {
 
       {/* Barra fija inferior de conversión rápida (Llamar 24h + WhatsApp) */}
       <StickyBottomActionBar isHidden={isMobileMenuOpen} />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 };
