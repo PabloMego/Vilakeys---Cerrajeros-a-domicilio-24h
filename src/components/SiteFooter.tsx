@@ -3,10 +3,10 @@ import { siteConfig } from '../config/siteConfig';
 
 export const SiteFooter: React.FC = () => {
   return (
-    <footer className="pt-6 pb-32 text-center" data-purpose="site-footer">
-      <div className="max-w-md mx-auto px-5 flex flex-col items-center">
+    <footer className="pt-10 pb-36 text-center text-black" data-purpose="site-footer">
+      <div className="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto px-5 flex flex-col items-center">
         {/* Social Media Section */}
-        <div className="mb-6 w-full">
+        <div className="mb-8 w-full">
           <p className="text-[11px] font-extrabold text-black/70 uppercase tracking-wider mb-3">
             Síguenos en redes sociales
           </p>
@@ -55,27 +55,70 @@ export const SiteFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* Official Logo (matching Screenshot 2) */}
-        <div className="mb-2">
-          <img
-            src={siteConfig.logoImage}
-            alt="Vilakeys Cerrajeros 24h"
-            className="h-12 sm:h-14 w-auto object-contain"
-          />
+        {/* SEO Navigation Links Grid */}
+        <div className="w-full bg-white/40 border border-black/10 rounded-2xl p-5 mb-8 text-left grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+          <div>
+            <h4 className="font-extrabold text-black uppercase tracking-wider mb-2">Servicios 24h</h4>
+            <ul className="space-y-1 font-semibold text-black/80">
+              <li><a href="#apertura-puertas" className="hover:underline">Apertura limpia sin romper</a></li>
+              <li><a href="#cambio-bombines" className="hover:underline">Cambio bombín antibumping</a></li>
+              <li><a href="#urgencias-24h" className="hover:underline">Cerrajero urgente 24h festivos</a></li>
+              <li><a href="#puertas-blindadas" className="hover:underline">Puertas blindadas y acorazadas</a></li>
+              <li><a href="#negocios-comercios" className="hover:underline">Persianas y cierres comerciales</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-extrabold text-black uppercase tracking-wider mb-2">Cobertura Alt Penedès</h4>
+            <ul className="space-y-1 font-semibold text-black/80">
+              <li><a href="#cobertura" className="hover:underline">Vilafranca del Penedès (08720)</a></li>
+              <li><a href="#cobertura" className="hover:underline">Santa Margarida i els Monjos (08730)</a></li>
+              <li><a href="#cobertura" className="hover:underline">Sant Sadurní d'Anoia (08770)</a></li>
+              <li><a href="#cobertura" className="hover:underline">Olèrdola / Moja (08734)</a></li>
+              <li><a href="#cobertura" className="hover:underline">Les Cabanyes, La Granada, Gelida</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-extrabold text-black uppercase tracking-wider mb-2">Garantía y Contacto</h4>
+            <p className="font-medium text-black/80 leading-relaxed mb-2">
+              Cerrajeros locales en Alt Penedès. Presupuesto previo telefónico cerrado y factura legal.
+            </p>
+            <p className="font-extrabold text-black">
+              📞 <a href={siteConfig.phoneHref} className="hover:underline">{siteConfig.phone}</a>
+            </p>
+            <p className="font-bold text-black/70">
+              ✉️ {siteConfig.email}
+            </p>
+          </div>
+        </div>
+
+        {/* Official Logo */}
+        <div className="mb-3">
+          <a href="#inicio" title="Ir arriba - VilaKeys">
+            <img
+              src={siteConfig.logoImage}
+              alt="Vilakeys Cerrajeros 24h"
+              className="h-12 sm:h-14 w-auto object-contain mx-auto"
+              width="180"
+              height="58"
+            />
+          </a>
         </div>
 
         {/* Contact Email */}
         <a
           href={siteConfig.emailHref}
-          className="text-xs font-bold text-black hover:underline transition-colors block mb-1.5"
+          className="text-xs font-bold text-black hover:underline transition-colors block mb-2"
         >
           {siteConfig.email}
         </a>
 
-        {/* Copyright notice (matching Screenshot 2) */}
-        <p className="text-[12px] sm:text-xs font-bold text-black/80 tracking-tight">
-          © 2026 {siteConfig.name} · Todos los derechos reservados.
+        {/* Copyright notice and NAP confirmation */}
+        <p className="text-[12px] sm:text-xs font-bold text-black/80 tracking-tight mb-1">
+          © 2026 {siteConfig.name} · Cerrajeros a Domicilio 24h en Vilafranca del Penedès y Alt Penedès.
         </p>
+
       </div>
     </footer>
   );

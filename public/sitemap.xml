@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Página principal comercial -->
+  <url>
+    <loc>https://www.vilakeys.es/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Sección de servicios de cerrajería -->
+  <url>
+    <loc>https://www.vilakeys.es/#servicios</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Apertura de puertas urgente sin romper -->
+  <url>
+    <loc>https://www.vilakeys.es/#apertura-puertas</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cambio de bombines y cerraduras de seguridad -->
+  <url>
+    <loc>https://www.vilakeys.es/#cambio-bombines</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Urgencias 24h y festivos -->
+  <url>
+    <loc>https://www.vilakeys.es/#urgencias-24h</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Puertas blindadas y cerraduras de alta seguridad -->
+  <url>
+    <loc>https://www.vilakeys.es/#puertas-blindadas</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Cobertura geográfica en Alt Penedès -->
+  <url>
+    <loc>https://www.vilakeys.es/#cobertura</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Transparencia, presupuestos y garantías -->
+  <url>
+    <loc>https://www.vilakeys.es/#tarifas-garantias</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Sobre nosotros y trato directo -->
+  <url>
+    <loc>https://www.vilakeys.es/#sobre-nosotros</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Preguntas frecuentes de cerrajería -->
+  <url>
+    <loc>https://www.vilakeys.es/#faq</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

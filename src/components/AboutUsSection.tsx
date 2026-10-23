@@ -1,7 +1,12 @@
 import React from 'react';
 import { siteConfig } from '../config/siteConfig';
+import { trackConversion } from '../utils/analytics';
 
 export const AboutUsSection: React.FC = () => {
+  const handleCall = () => {
+    trackConversion('click_to_call', { placement: 'about_us_card' });
+  };
+
   return (
     <section id="sobre-nosotros" className="pt-2 pb-2 text-center h-full" data-purpose="about-us">
       {/* White Card Container matching the site's bold card style */}
@@ -28,7 +33,7 @@ export const AboutUsSection: React.FC = () => {
                   Trato Directo y Local
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Somos cerrajeros autónomos afincados en el Alt Penedès. Sin intermediarios ni centralitas de terceros.
+                  Somos cerrajeros profesionales afincados en el Alt Penedès. Sin intermediarios, sin comisionistas ni centralitas externas de terceros.
                 </p>
               </div>
             </div>
@@ -42,7 +47,7 @@ export const AboutUsSection: React.FC = () => {
                   Apertura Limpia Sin Romper
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Cuidamos tu puerta. Siempre priorizamos métodos no destructivos para abrir sin ocasionar desperfectos.
+                  Cuidamos tu puerta. Siempre priorizamos métodos no destructivos (ganzúas técnicas y mica) para abrir sin ocasionar desperfectos.
                 </p>
               </div>
             </div>
@@ -56,7 +61,7 @@ export const AboutUsSection: React.FC = () => {
                   Presupuesto Telefónico Cerrado
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Transparencia total: te informamos del coste exacto antes de salir hacia tu ubicación, sin sorpresas.
+                  Transparencia total: te informamos del coste exacto antes de salir hacia tu ubicación, para que decidas con total seguridad.
                 </p>
               </div>
             </div>
@@ -70,7 +75,7 @@ export const AboutUsSection: React.FC = () => {
                   Disponibilidad 24h los 365 días
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Atendemos emergencias de día y de noche con un tiempo medio de llegada de {siteConfig.avgArrivalTime}.
+                  Atendemos emergencias de día y de noche con un tiempo medio de llegada de {siteConfig.avgArrivalTime} y taller móvil completamente equipado.
                 </p>
               </div>
             </div>
@@ -84,9 +89,10 @@ export const AboutUsSection: React.FC = () => {
           </p>
           <a
             href={siteConfig.phoneHref}
-            className="w-full py-3 px-4 rounded-xl bg-[#feb616] border-[1.5px] border-black text-white font-extrabold text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-transform hover:brightness-105"
+            onClick={handleCall}
+            className="w-full py-3 px-4 rounded-xl bg-[#feb616] border-[1.5px] border-black text-black font-extrabold text-xs sm:text-sm md:text-base flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-transform hover:brightness-105"
           >
-            <svg className="w-4 h-4 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-black shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z" />
             </svg>
             LLAMAR AHORA: {siteConfig.phone}

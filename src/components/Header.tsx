@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../config/siteConfig';
+import { trackConversion } from '../utils/analytics';
 
 interface HeaderProps {
   isMobileMenuOpen?: boolean;
@@ -26,6 +27,14 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleCallHeader = (placement: string) => {
+    trackConversion('click_to_call', { placement });
+  };
+
+  const handleWhatsAppDrawer = () => {
+    trackConversion('click_to_whatsapp', { placement: 'header_drawer' });
+  };
+
   return (
     <>
       <header
@@ -44,13 +53,15 @@ export const Header: React.FC<HeaderProps> = ({
             <a href="#inicio" className="block focus:outline-none focus:ring-2 focus:ring-black rounded-lg">
               <img
                 src={siteConfig.logoImage}
-                alt="Vilakeys · Cerrajeros a Domicilio 24h"
+                alt="Vilakeys · Cerrajeros a Domicilio 24h en Vilafranca del Penedès"
                 className="h-11 sm:h-12 md:h-13 w-auto object-contain"
+                width="160"
+                height="52"
               />
             </a>
           </div>
 
-          {/* Scrolled State for Mobile: Centered Lock Capsule (matching Screenshot 2 on mobile only) */}
+          {/* Scrolled State for Mobile: Centered Lock Capsule */}
           <div
             className={`md:hidden absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${
               isScrolled ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
@@ -59,23 +70,25 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="#inicio"
               className="bg-white border-2 border-black rounded-full px-5 py-2 inline-flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform"
-              title="Volver arriba - Vilakeys"
+              title="Volver arriba - Vilakeys Cerrajeros"
             >
               <img
                 src={siteConfig.lockIcon}
                 alt="Vilakeys Lock"
                 className="h-6 w-auto object-contain"
+                width="24"
+                height="24"
               />
             </a>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {siteConfig.navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="font-extrabold text-sm lg:text-base text-black hover:opacity-75 transition-opacity"
+                className="font-extrabold text-sm lg:text-[15px] text-black hover:opacity-75 transition-opacity"
               >
                 {link.label}
               </a>
@@ -86,6 +99,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden md:flex items-center gap-3">
             <a
               href={siteConfig.phoneHref}
+              onClick={() => handleCallHeader('header_desktop_button')}
               className="py-2.5 px-5 rounded-xl bg-white border-2 border-black text-[#e59800] font-extrabold text-sm flex items-center gap-2 shadow-xs hover:bg-white/95 active:scale-95 transition-all"
             >
               <svg className="w-4 h-4 text-black shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -131,16 +145,18 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="w-full max-w-xs sm:max-w-sm h-full bg-[#feb616] p-6 shadow-2xl flex flex-col justify-between border-l-2 border-black animate-in slide-in-from-right duration-300"
+            className="w-full max-w-xs sm:max-w-sm h-full bg-[#feb616] p-6 shadow-2xl flex flex-col justify-between border-l-2 border-black animate-in slide-in-from-right duration-300 overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-black/20">
+              <div className="flex items-center justify-between pb-5 border-b border-black/20">
                 <img
                   src={siteConfig.logoImage}
                   alt="Vilakeys"
                   className="h-10 w-auto object-contain"
+                  width="120"
+                  height="40"
                 />
                 <button
                   type="button"
@@ -153,13 +169,13 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               {/* Navigation Links */}
-              <nav className="mt-8 space-y-3">
+              <nav className="mt-6 space-y-2">
                 {siteConfig.navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-xl font-extrabold text-black hover:translate-x-1.5 transition-transform py-2"
+                    className="block text-lg font-extrabold text-black hover:translate-x-1.5 transition-transform py-1.5 border-b border-black/10"
                   >
                     {link.label}
                   </a>
@@ -167,28 +183,31 @@ export const Header: React.FC<HeaderProps> = ({
               </nav>
 
               {/* Localities in Drawer */}
-              <div className="mt-8">
-                <p className="text-xs uppercase tracking-wider font-extrabold text-black/70 mb-3">
-                  Poblaciones en Alt Penedès
+              <div className="mt-6">
+                <p className="text-xs uppercase tracking-wider font-extrabold text-black/70 mb-2">
+                  Municipios en Alt Penedès
                 </p>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-1.5">
                   {siteConfig.localities.map((loc) => (
-                    <div
+                    <a
                       key={loc}
-                      className="bg-black/10 rounded-lg px-2.5 py-1.5 text-xs font-bold text-black truncate"
+                      href="#cobertura"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="bg-black/10 hover:bg-black/20 rounded-lg px-2 py-1.5 text-xs font-bold text-black truncate block text-center"
                     >
                       {loc}
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Quick Actions in Drawer */}
-            <div className="space-y-3 pt-6 border-t border-black/20">
+            <div className="space-y-2.5 pt-5 border-t border-black/20">
               <a
                 href={siteConfig.phoneHref}
-                className="w-full py-3.5 px-4 rounded-xl bg-white text-[#e59800] border-2 border-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
+                onClick={() => handleCallHeader('drawer_call_button')}
+                className="w-full py-3 px-4 rounded-xl bg-white text-[#e59800] border-2 border-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
               >
                 <svg className="w-5 h-5 text-black shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z" />
@@ -199,7 +218,8 @@ export const Header: React.FC<HeaderProps> = ({
                 href={siteConfig.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-transparent border-2 border-black text-black font-extrabold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform hover:bg-black hover:text-white"
+                onClick={handleWhatsAppDrawer}
+                className="w-full py-2.5 px-4 rounded-xl bg-transparent border-2 border-black text-black font-extrabold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform hover:bg-black hover:text-white"
               >
                 <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold">
                   W
@@ -208,9 +228,9 @@ export const Header: React.FC<HeaderProps> = ({
               </a>
               <a
                 href={siteConfig.emailHref}
-                className="w-full py-2.5 px-4 rounded-xl bg-black/10 hover:bg-black/20 text-black font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all"
+                className="w-full py-2 px-4 rounded-xl bg-black/10 hover:bg-black/20 text-black font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-all"
               >
-                <svg className="w-4 h-4 text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {siteConfig.email}
@@ -230,7 +250,7 @@ export const Header: React.FC<HeaderProps> = ({
                   </a>
                 ))}
               </div>
-              <p className="text-[11px] text-center font-semibold text-black/60 pt-1">
+              <p className="text-[10px] text-center font-bold text-black/60 pt-1">
                 Llegamos en 20 minutos · Presupuesto telefónico cerrado
               </p>
             </div>

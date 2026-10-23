@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { siteConfig } from '../config/siteConfig';
+import { trackConversion } from '../utils/analytics';
 
 interface StickyBottomActionBarProps {
   isHidden?: boolean;
@@ -12,9 +13,14 @@ export const StickyBottomActionBar: React.FC<StickyBottomActionBarProps> = ({ is
 
   const handleCallClick = () => {
     setIsCalling(true);
+    trackConversion('click_to_call', { placement: 'sticky_bottom_bar' });
     setTimeout(() => {
       setIsCalling(false);
     }, 1200);
+  };
+
+  const handleWhatsAppClick = () => {
+    trackConversion('click_to_whatsapp', { placement: 'sticky_bottom_bar' });
   };
 
   return (
@@ -58,6 +64,7 @@ export const StickyBottomActionBar: React.FC<StickyBottomActionBarProps> = ({ is
           href={siteConfig.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleWhatsAppClick}
           className="flex-1 py-3 sm:py-3.5 px-3 rounded-2xl bg-[#feb616] border-[1.5px] border-black text-white text-sm sm:text-base font-extrabold tracking-wide flex items-center justify-center gap-2 shadow-xs hover:brightness-105 active:scale-95 transition-all overflow-hidden"
           title="WhatsApp Directo 24h"
         >
