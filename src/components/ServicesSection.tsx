@@ -141,9 +141,19 @@ export const ServicesSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => toggleService(service.id)}
-                    className="w-full text-center text-[11px] font-bold text-black/70 hover:text-black py-1 focus:outline-none cursor-pointer"
+                    className="w-full text-center text-[11px] font-bold text-black/70 hover:text-black py-1 focus:outline-none cursor-pointer flex items-center justify-center gap-1.5"
                   >
-                    {isExpanded ? '▲ Ver menos' : '▼ Ver información técnica y tarifas'}
+                    <span>{isExpanded ? 'Ver menos detalles' : 'Ver información técnica y tarifas'}</span>
+                    <svg
+                      className={`w-3 h-3 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
                   </button>
                 </div>
               </article>
