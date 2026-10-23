@@ -35,12 +35,12 @@ export const HeroSection: React.FC = () => {
 
           {/* Keyword Subtitle for Search Engines and immediate user context */}
           <p className="text-xs sm:text-sm uppercase font-extrabold text-black/75 tracking-wider mb-3">
-            Cerrajeros a Domicilio 24h · Vilafranca del Penedès y comarca
+            Cerrajeros Profesionales a Domicilio 24h · Vilafranca del Penedès y Alt Penedès
           </p>
 
           {/* 3. Reassurance Paragraph */}
           <p className="text-[15px] sm:text-base md:text-lg font-bold text-black leading-snug max-w-[320px] sm:max-w-md md:max-w-xl mx-auto md:mx-0 mb-6">
-            Llegamos en 20 minutos con presupuesto telefónico cerrado y apertura limpia sin romper tu puerta. Sin intermediarios ni costes ocultos.
+            Somos cerrajeros profesionales: llegamos en 20 minutos con presupuesto telefónico cerrado y apertura limpia sin romper tu puerta. Sin intermediarios ni costes ocultos.
           </p>
 
           {/* 4. Action Buttons */}

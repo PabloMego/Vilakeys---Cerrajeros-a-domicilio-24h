@@ -284,7 +284,7 @@ export const siteConfig = {
     {
       category: 'Tiempos',
       question: '¿Cuánto tardáis en llegar a mi casa en Vilafranca o pueblos cercanos?',
-      answer: 'Nuestro tiempo medio de llegada es de 20 minutos. Al ser cerrajeros de proximidad afincados en el Alt Penedès y contar con vehículo taller móvil, nos desplazamos de forma directa sin pasar por intermediarios ni esperas de centralitas externas.'
+      answer: 'Nuestro tiempo medio de llegada es de 20 minutos. Al ser cerrajeros profesionales en el Alt Penedès y contar con vehículo taller móvil equipado, nos desplazamos de forma directa sin pasar por intermediarios ni esperas de centralitas externas.'
     },
     {
       category: 'Seguridad',

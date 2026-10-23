@@ -30,10 +30,10 @@ export const AboutUsSection: React.FC = () => {
               </span>
               <div>
                 <h3 className="font-extrabold text-sm md:text-base text-black">
-                  Empresa Local y Trato Directo
+                  Cerrajeros Profesionales
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Somos una empresa de cerrajería profesional y seria con base en Vilafranca del Penedès y comarca. Trato directo con técnicos especializados, sin intermediarios ni centralitas externas.
+                  Somos cerrajeros profesionales en Vilafranca del Penedès y Alt Penedès. Sin intermediarios ni centralitas de terceros.
                 </p>
               </div>
             </div>
