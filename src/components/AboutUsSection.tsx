@@ -30,10 +30,10 @@ export const AboutUsSection: React.FC = () => {
               </span>
               <div>
                 <h3 className="font-extrabold text-sm md:text-base text-black">
-                  Trato Directo y Local
+                  Empresa Local y Trato Directo
                 </h3>
                 <p className="text-xs md:text-sm text-black/80 font-medium leading-relaxed mt-0.5">
-                  Somos cerrajeros profesionales afincados en el Alt Penedès. Sin intermediarios, sin comisionistas ni centralitas externas de terceros.
+                  Somos una empresa de cerrajería profesional y seria con base en Vilafranca del Penedès y comarca. Trato directo con técnicos especializados, sin intermediarios ni centralitas externas.
                 </p>
               </div>
             </div>
@@ -82,8 +82,34 @@ export const AboutUsSection: React.FC = () => {
           </div>
         </div>
 
+        {/* Ficha Verificada en Google Maps */}
+        <div className="mt-5 p-3 rounded-2xl bg-black/5 border border-black/15 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <span className="w-8 h-8 rounded-xl bg-white border border-black flex items-center justify-center shrink-0 text-base shadow-2xs">
+              📍
+            </span>
+            <div>
+              <p className="text-xs font-black text-black leading-tight">
+                Ficha Verificada en Google Maps
+              </p>
+              <p className="text-[11px] text-black/70 font-bold">
+                ★★★★★ VilaKeys Cerrajero
+              </p>
+            </div>
+          </div>
+          <a
+            href={siteConfig.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-1.5 px-3 rounded-lg bg-white border border-black text-black font-extrabold text-[11px] hover:bg-black hover:text-white transition-colors shrink-0 shadow-2xs"
+            title="Ver ubicación y opiniones en Google Maps"
+          >
+            Ver en Maps ↗
+          </a>
+        </div>
+
         {/* Small CTA Banner inside card */}
-        <div className="mt-6 pt-5 border-t border-black/10 text-center">
+        <div className="mt-4 pt-4 border-t border-black/10 text-center">
           <p className="text-xs md:text-sm font-bold text-black mb-3">
             ¿Necesitas ayuda inmediata en tu puerta?
           </p>

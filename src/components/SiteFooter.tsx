@@ -52,6 +52,20 @@ export const SiteFooter: React.FC = () => {
                 <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
             </a>
+
+            {/* Google Maps */}
+            <a
+              href="https://maps.app.goo.gl/Tb92yaHdnUp59g257"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ficha Oficial de Google Maps de Vilakeys"
+              className="w-10 h-10 rounded-full bg-white border-[1.5px] border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-xs active:scale-95"
+              title="Google Maps: VilaKeys Cerrajero"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -82,7 +96,7 @@ export const SiteFooter: React.FC = () => {
           <div>
             <h4 className="font-extrabold text-black uppercase tracking-wider mb-2">Garantía y Contacto</h4>
             <p className="font-medium text-black/80 leading-relaxed mb-2">
-              Cerrajeros locales en Alt Penedès. Presupuesto previo telefónico cerrado y factura legal.
+              Empresa de cerrajería especializada en Vilafranca y Alt Penedès. Presupuesto previo telefónico cerrado y factura oficial.
             </p>
             <p className="font-extrabold text-black">
               📞 <a href={siteConfig.phoneHref} className="hover:underline">{siteConfig.phone}</a>

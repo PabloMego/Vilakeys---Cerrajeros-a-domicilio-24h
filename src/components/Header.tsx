@@ -138,14 +138,14 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu con animaciones profesionales y fluidas */}
       {isMobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm transition-opacity duration-300 animate-in fade-in"
+          className="md:hidden fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-md animate-drawer-backdrop"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="w-full max-w-xs sm:max-w-sm h-full bg-[#feb616] p-6 shadow-2xl flex flex-col justify-between border-l-2 border-black animate-in slide-in-from-right duration-300 overflow-y-auto"
+            className="w-full max-w-xs sm:max-w-sm h-full bg-[#feb616] p-6 shadow-[0_0_50px_rgba(0,0,0,0.35)] flex flex-col justify-between border-l-2 border-black animate-drawer-panel overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
@@ -161,21 +161,22 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center text-black font-bold text-lg hover:bg-black hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center text-black font-bold text-lg hover:bg-black hover:text-white active:scale-90 transition-all shadow-xs"
                   aria-label="Cerrar menú"
                 >
                   ✕
                 </button>
               </div>
 
-              {/* Navigation Links */}
-              <nav className="mt-6 space-y-2">
-                {siteConfig.navLinks.map((link) => (
+              {/* Navigation Links con entrada escalonada */}
+              <nav className="mt-6 space-y-1.5">
+                {siteConfig.navLinks.map((link, idx) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-lg font-extrabold text-black hover:translate-x-1.5 transition-transform py-1.5 border-b border-black/10"
+                    style={{ animationDelay: `${(idx + 1) * 50}ms` }}
+                    className="block text-lg font-extrabold text-black hover:translate-x-2 transition-all py-2 border-b border-black/10 active:opacity-70 animate-drawer-item"
                   >
                     {link.label}
                   </a>
@@ -183,7 +184,7 @@ export const Header: React.FC<HeaderProps> = ({
               </nav>
 
               {/* Localities in Drawer */}
-              <div className="mt-6">
+              <div className="mt-6 animate-drawer-item" style={{ animationDelay: '360ms' }}>
                 <p className="text-xs uppercase tracking-wider font-extrabold text-black/70 mb-2">
                   Municipios en Alt Penedès
                 </p>
@@ -193,7 +194,7 @@ export const Header: React.FC<HeaderProps> = ({
                       key={loc}
                       href="#cobertura"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="bg-black/10 hover:bg-black/20 rounded-lg px-2 py-1.5 text-xs font-bold text-black truncate block text-center"
+                      className="bg-black/10 hover:bg-black/20 rounded-lg px-2 py-1.5 text-xs font-bold text-black truncate block text-center active:scale-95 transition-transform"
                     >
                       {loc}
                     </a>
@@ -203,11 +204,28 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Quick Actions in Drawer */}
-            <div className="space-y-2.5 pt-5 border-t border-black/20">
+            <div className="space-y-2.5 pt-5 border-t border-black/20 animate-drawer-item" style={{ animationDelay: '420ms' }}>
+              {/* Google Maps Profile Card in Drawer */}
+              <a
+                href={siteConfig.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-3.5 rounded-xl bg-white border-2 border-black text-black font-extrabold text-xs flex items-center justify-between shadow-2xs hover:bg-black hover:text-white transition-all active:scale-95 group"
+                title="Ficha Oficial en Google Maps"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="text-sm">📍</span>
+                  <span>Ficha en Google Maps</span>
+                </span>
+                <span className="text-[10px] font-black uppercase bg-[#feb616] text-black px-1.5 py-0.5 rounded group-hover:bg-white group-hover:text-black">
+                  ★★★★★
+                </span>
+              </a>
+
               <a
                 href={siteConfig.phoneHref}
                 onClick={() => handleCallHeader('drawer_call_button')}
-                className="w-full py-3 px-4 rounded-xl bg-white text-[#e59800] border-2 border-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-transform"
+                className="w-full py-3 px-4 rounded-xl bg-white text-[#e59800] border-2 border-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-sm active:scale-95 hover:bg-white/90 transition-all"
               >
                 <svg className="w-5 h-5 text-black shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z" />
@@ -219,7 +237,7 @@ export const Header: React.FC<HeaderProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppDrawer}
-                className="w-full py-2.5 px-4 rounded-xl bg-transparent border-2 border-black text-black font-extrabold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform hover:bg-black hover:text-white"
+                className="w-full py-2.5 px-4 rounded-xl bg-transparent border-2 border-black text-black font-extrabold text-sm flex items-center justify-center gap-2 active:scale-95 transition-all hover:bg-black hover:text-white"
               >
                 <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold">
                   W
@@ -236,14 +254,14 @@ export const Header: React.FC<HeaderProps> = ({
                 {siteConfig.email}
               </a>
               {/* Social links */}
-              <div className="flex items-center justify-center gap-2 pt-1">
+              <div className="flex items-center justify-center gap-2 pt-1 flex-wrap">
                 {siteConfig.socials.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-7 px-2.5 rounded-full bg-white border border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all text-[11px] font-extrabold shadow-2xs"
+                    className="h-7 px-2.5 rounded-full bg-white border border-black flex items-center justify-center text-black hover:bg-black hover:text-white transition-all text-[11px] font-extrabold shadow-2xs active:scale-95"
                     title={social.name}
                   >
                     {social.name}

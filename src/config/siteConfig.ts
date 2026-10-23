@@ -54,6 +54,7 @@ export const siteConfig = {
   get whatsappHref() {
     return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(this.whatsappMessage)}`;
   },
+  googleMapsUrl: 'https://maps.app.goo.gl/Tb92yaHdnUp59g257',
   avgArrivalTime: '20 minutos',
   heroImage,
   logoImage,
@@ -318,6 +319,11 @@ export const siteConfig = {
       name: 'YouTube',
       url: 'https://www.youtube.com/channel/UC7rkOaWRBf6nWPt8ZC7Nfrw',
       handle: 'Vilakeys'
+    },
+    {
+      name: 'Google Maps',
+      url: 'https://maps.app.goo.gl/Tb92yaHdnUp59g257',
+      handle: 'Ficha Oficial VilaKeys'
     }
   ],
 

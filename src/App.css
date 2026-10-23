@@ -1,4 +1,4 @@
-/* App.css - Estilos específicos complementarios de Tailwind para VilaKeys */
+/* App.css - Estilos complementarios y animaciones avanzadas para VilaKeys */
 
 /* Animación sutil para el indicador de cerrajero disponible */
 @keyframes pulseGlow {
@@ -14,4 +14,49 @@
 
 .animate-pulse-glow {
   animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animaciones profesionales para el Sidebar / Drawer móvil */
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
+}
+
+@keyframes drawerSlideRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes itemFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-backdrop {
+  animation: backdropFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-drawer-panel {
+  animation: drawerSlideRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.animate-drawer-item {
+  animation: itemFadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

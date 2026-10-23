@@ -93,6 +93,16 @@ export const LocalCoverageSection: React.FC = () => {
         {/* Localized CTA & Arrival Badge */}
         <div>
           <a
+            href={siteConfig.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-extrabold text-black/70 hover:text-black flex items-center justify-center gap-1 mb-2.5 hover:underline"
+            title="Ver ubicación en Google Maps"
+          >
+            <span>📍 Ver ficha y reseñas oficiales en Google Maps ↗</span>
+          </a>
+
+          <a
             href={siteConfig.phoneHref}
             onClick={handleCallLocality}
             className="w-full py-3 px-4 rounded-xl bg-[#feb616] border-[1.5px] border-black text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-transform hover:brightness-105 mb-3"
